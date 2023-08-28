@@ -1,25 +1,39 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../database";
-
-
+import sequelize from "../database.js";
 
 const post = sequelize.define(
-    "post",
-    // modelo de los atributos y definicion de los mismos
-
-    id = {
+    "post",{
+    id : {
         type: DataTypes.INTEGER,
         primaryKey : true ,
         autoIncrement: true,
     },
-    titulo ={
+    titulo:{
         type:DataTypes.STRING,
         allownull: false,
     },
-    contenido = {
+    contenido:{
         type: DataTypes.TEXT("long"),
         allownull: false,
     },
+    estado: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      deletedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      }},
     {
         createdAt: true,
         updatedAt: true,

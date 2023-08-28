@@ -1,4 +1,4 @@
-import usuario, {findAll, findByPk} from "../models/usuario";
+import usuario from "../models/usuario.js";
 
 const ctrl = {};
 
@@ -16,7 +16,7 @@ ctrl.renderNuevoUsuario = (req, res) => {
 
 ctrl.obtenerUsuarios = async (req, res) => {
     try {
-        const usuarios = await findAll ({
+        const usuarios = await usuario.findAll ({
             where: {
                 estado: true
             }
@@ -32,7 +32,7 @@ ctrl.obtenerUsuarios = async (req, res) => {
 ctrl.obtenerUsuario = async (req, res) => {
     try {
         const {id} = req.params;
-        const usuario = await findByPk(id);
+        const usuario = await usuario.findByPk(id);
         return res.json(usuario);
     }catch (error) {
         console.log('Error en el controlador', error );

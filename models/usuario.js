@@ -1,30 +1,48 @@
 
 
 import { DataTypes } from "sequelize";
-import sequelize from "../database";
+import sequelize from "../database.js";
 
 const usuario = sequelize.define(
-    "usuario",
+    "usuario",{
 
-    id = {
+    id : {
         type: DataTypes.INTEGER,
         primaryKey : true,
         autoIncrement: true,
     },
-    nombre_user = {
+    nombre_user : {
         type:DataTypes.STRING,
         allowNull: false,
         unique: true,
     },
-    email = {
+    email : {
         type:DataTypes.STRING,
         allowNull: false,
         unique: true,
     },
-    contraseña = {
+    contraseña : {
         type:DataTypes.STRING,
         allowNull: false,
     },
+    estado: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      deletedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      }},
     {
         createdAt: true,
         updatedAt: true,
@@ -38,4 +56,4 @@ usuario.sync({force:false}).then(()=>{
 });
 
 
-Modele.exports = usuario;
+export default usuario;

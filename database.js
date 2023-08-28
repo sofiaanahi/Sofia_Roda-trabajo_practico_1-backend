@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes } from "sequelize";
+import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
 dotenv.config()
 
@@ -14,4 +14,4 @@ const sequelize = new Sequelize(
 );
 
 
-export {sequelize, DataTypes};
+export default sequelize;

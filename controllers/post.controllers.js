@@ -1,4 +1,4 @@
-import post, {findAll, findByPk} from "../models/post";
+import post from "../models/post.js";
 
 const ctrl = {};
 
@@ -19,7 +19,7 @@ ctrl.renderEditarPost = (req, res) => {
 
 ctrl.obtenerPosts = async (req, res) => {
     try{
-        const posts = await findAll ({
+        const posts = await post.findAll ({
             where:{
                 estado:true
             }
@@ -35,7 +35,7 @@ ctrl.obtenerPosts = async (req, res) => {
 ctrl.obtenerPost = async (req, res) => {
     try{
         const {id} = req.params;
-        const post = await findByPk(id);
+        const post = await post.findByPk(id);
         return res.json(post);
     }catch (error) {
         console.log('Error en el controlador', error );
@@ -65,7 +65,7 @@ ctrl.crearPost = async (req,res) => {
 ctrl.actualizarPost =  async (req ,res)=>{
     try {
         const {id} = req.params;
-        const post = await findByPk(id);
+        const post = await post.findByPk(id);
         await post.update(req.body)
         return res.json({
             message:"Post actualizada exitosamente"
@@ -80,7 +80,7 @@ ctrl.actualizarPost =  async (req ,res)=>{
 ctrl.eliminarPost = async (req, res) => {
     const {id} = req.params;
     try {
-        const post = await findByPk(id);
+        const post = await post.findByPk(id);
         await post.update({estado:false});
         return res.json({message:"El post se elimino correctamente"});
     }catch(error) {
@@ -89,4 +89,4 @@ ctrl.eliminarPost = async (req, res) => {
     }
 }
 
-export default ctrl;
+export default ctrl
