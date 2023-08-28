@@ -39,8 +39,6 @@ app.use((req, res, next) => {
     return res.status(404).render("404");
 });
 
-// inicio del servidor
 
-app.listen(port, () => {
-    console.log(`sevidor en http://localhost:${port}`);
-});
+
+export default app
