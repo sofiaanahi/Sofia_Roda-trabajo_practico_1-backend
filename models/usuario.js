@@ -1,12 +1,11 @@
-// crea la tabla de usuario
+
 
 import { DataTypes } from "sequelize";
 import sequelize from "../database";
 
 const usuario = sequelize.define(
     "usuario",
-    // modelo de los atributos y definicion de los mismos 
-    
+
     id = {
         type: DataTypes.INTEGER,
         primaryKey : true,

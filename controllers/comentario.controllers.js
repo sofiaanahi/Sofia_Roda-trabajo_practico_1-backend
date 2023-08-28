@@ -1,0 +1,1 @@
+import comentario, {findAll,findByPk} from "../models/comentario";
